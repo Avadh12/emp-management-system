@@ -7,6 +7,8 @@ import com.example.Employee_Management.model.EmployeeCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,6 +39,22 @@ public class EmployeeService {
         Optional<Employee> studentOptional = employeeRepository.findById(userID);
         return studentOptional.orElseGet(Employee::new);
     }
+    public void deleteByID (Long userID){
+        employeeRepository.deleteById(userID);
+    }
+
+    public List<Employee> getAll()
+    {
+        List<Employee>employees   = new ArrayList<Employee>();
+        employeeRepository.findAll().forEach(employee -> employees.add(employee));
+        return employees;
+    }
+
+    public void deleteAll (){
+        employeeRepository.deleteAll();
+    }
+
+
 
 
 
