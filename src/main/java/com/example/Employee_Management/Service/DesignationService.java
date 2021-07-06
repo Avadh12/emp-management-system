@@ -7,7 +7,7 @@ import com.example.Employee_Management.model.EmployeeCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class DesignationService {
     @Autowired
     private DesignationRepository designationRepository;

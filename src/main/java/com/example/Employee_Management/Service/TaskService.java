@@ -7,7 +7,7 @@ import com.example.Employee_Management.model.TaskCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class TaskService {
     @Autowired
     private TaskRepository taskRepository;

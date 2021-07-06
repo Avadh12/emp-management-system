@@ -21,11 +21,15 @@ public class EmployeeController {
         return ResponseEntity.ok("Created");
     }
 
-    @GetMapping("/api/v1/Project/{usrerid}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long userid) {
-
+    @GetMapping("/api/v1/Project/{userid}")
+    public ResponseEntity<Employee>getUserByID(@PathVariable Long userid){
         return ResponseEntity.ok(employeeService.getUserByID(userid));
     }
+
+
+
+
+
 }
 
 
