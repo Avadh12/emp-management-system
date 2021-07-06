@@ -25,5 +25,9 @@ public class DesignationController {
     private List<Designation> getAll() {
         return designationService.getAll();
     }
+    @DeleteMapping("/api/v1/Designation")
+    private void DeleteAllStudent() {
+        designationService.deleteAll();
+    }
 
 }

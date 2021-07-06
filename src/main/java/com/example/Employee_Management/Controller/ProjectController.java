@@ -25,6 +25,10 @@ public class ProjectController {
     private List<Project> getAll(){
         return projectService.getAll();
 }
+    @DeleteMapping("/api/v1/ProjectManage")
+    private void DeleteAllStudent() {
+        projectService.deleteAll();
+    }
 
 
 }

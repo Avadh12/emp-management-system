@@ -26,5 +26,9 @@ public class TaskController {
     private List<Task> getAll() {
         return taskService.getAll();
     }
+    @DeleteMapping("/api/v1/Task")
+    private void DeleteAllStudent() {
+        taskService.deleteAll();
+    }
 
 }

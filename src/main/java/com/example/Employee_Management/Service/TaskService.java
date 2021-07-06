@@ -33,4 +33,8 @@ public class TaskService {
         return tasks;
     }
 
+    public void deleteAll (){
+        taskRepository.deleteAll();
+    }
+
 }

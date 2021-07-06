@@ -36,4 +36,8 @@ public class DesignationService {
         return designations;
     }
 
+    public void deleteAll (){
+        designationRepository.deleteAll();
+    }
+
 }

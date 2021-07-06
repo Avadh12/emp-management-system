@@ -35,5 +35,9 @@ public class ProjectService {
         return projects;
     }
 
+    public void deleteAll (){
+        projectRepository.deleteAll();
+    }
+
 
 }

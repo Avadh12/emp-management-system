@@ -35,5 +35,8 @@ public class TaskAllotmentService {
         taskAllotmentRepository.findAll().forEach(taskAllotment -> taskAllotments.add(taskAllotment));
         return taskAllotments;
     }
+    public void deleteAll (){
+        taskAllotmentRepository.deleteAll();
+    }
 
 }
