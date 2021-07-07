@@ -30,4 +30,11 @@ public class DesignationController {
         designationService.deleteAll();
     }
 
+    @GetMapping("/api/v1/Designation/{designationid}")
+    public ResponseEntity<Designation>getDesignationByID(@PathVariable Integer designationid){
+        return ResponseEntity.ok(designationService.getDesignationByID(designationid));
+    }
+
+
+
 }

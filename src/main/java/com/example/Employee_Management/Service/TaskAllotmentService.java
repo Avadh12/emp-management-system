@@ -2,6 +2,7 @@ package com.example.Employee_Management.Service;
 
 import com.example.Employee_Management.Repository.TaskAllotmentRepository;
 import com.example.Employee_Management.entity.Employee;
+import com.example.Employee_Management.entity.Project;
 import com.example.Employee_Management.entity.TaskAllotment;
 import com.example.Employee_Management.model.DesignationCreateRequest;
 import com.example.Employee_Management.model.EmployeeCreateRequest;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskAllotmentService {
@@ -38,5 +40,11 @@ public class TaskAllotmentService {
     public void deleteAll (){
         taskAllotmentRepository.deleteAll();
     }
+
+    public TaskAllotment getTaskAllotmentByID(Integer taskAllotmentID){
+        Optional<TaskAllotment>taskAllotmentOptional = taskAllotmentRepository.findById(taskAllotmentID);
+        return taskAllotmentOptional.orElseGet(TaskAllotment::new);
+    }
+
 
 }

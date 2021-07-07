@@ -1,6 +1,7 @@
 package com.example.Employee_Management.Service;
 
 import com.example.Employee_Management.Repository.ProjectRepository;
+import com.example.Employee_Management.entity.Designation;
 import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.entity.Project;
 import com.example.Employee_Management.model.DesignationCreateRequest;
@@ -37,6 +38,11 @@ public class ProjectService {
 
     public void deleteAll (){
         projectRepository.deleteAll();
+    }
+
+    public Project getProjectByID(Integer projectID){
+        Optional<Project> projectOptional = projectRepository.findById(projectID);
+        return projectOptional.orElseGet(Project::new);
     }
 
 

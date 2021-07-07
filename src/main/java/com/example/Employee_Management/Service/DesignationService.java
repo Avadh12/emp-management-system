@@ -40,4 +40,9 @@ public class DesignationService {
         designationRepository.deleteAll();
     }
 
+    public Designation getDesignationByID(Integer designationID){
+        Optional<Designation> designationOptional = designationRepository.findById(designationID);
+        return designationOptional.orElseGet(Designation::new);
+    }
+
 }

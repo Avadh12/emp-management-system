@@ -1,6 +1,7 @@
 package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.ProjectService;
+import com.example.Employee_Management.entity.Designation;
 import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.entity.Project;
 import com.example.Employee_Management.model.EmployeeCreateRequest;
@@ -21,14 +22,24 @@ public class ProjectController {
         projectService.createProject(Request);
         return ResponseEntity.ok("Created");
     }
+
+
     @GetMapping("/api/v1/ProjectManage")
     private List<Project> getAll(){
         return projectService.getAll();
 }
+
+
     @DeleteMapping("/api/v1/ProjectManage")
     private void DeleteAllStudent() {
         projectService.deleteAll();
     }
+
+    @GetMapping("/api/v1/ProjectManage/{projectid}")
+    public ResponseEntity<Project>getProjectByID(@PathVariable Integer projectid){
+        return ResponseEntity.ok(projectService.getProjectByID(projectid));
+    }
+
 
 
 }

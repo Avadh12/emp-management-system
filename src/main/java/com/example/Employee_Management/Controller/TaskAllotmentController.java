@@ -2,6 +2,7 @@ package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.TaskAllotmentService;
 import com.example.Employee_Management.entity.Employee;
+import com.example.Employee_Management.entity.Project;
 import com.example.Employee_Management.entity.TaskAllotment;
 import com.example.Employee_Management.model.TaskAllotmentCreateRequest;
 import com.example.Employee_Management.model.TaskCreateRequest;
@@ -32,5 +33,11 @@ public class TaskAllotmentController {
     private void DeleteAllStudent() {
         taskAllotmentService.deleteAll();
     }
+
+    @GetMapping("/api/v1/TaskAllotment/{taskAllotmentid}")
+    public ResponseEntity<TaskAllotment>getTaskAllotmentByID(@PathVariable Integer taskAllotmentid){
+        return ResponseEntity.ok(taskAllotmentService.getTaskAllotmentByID(taskAllotmentid));
+    }
+
 
 }
