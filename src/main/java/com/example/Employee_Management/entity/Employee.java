@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 @Getter
@@ -18,7 +19,9 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Emp_id;
 
+
     private int Dest_id;
+
 
     private String Name;
 
@@ -29,21 +32,24 @@ public class Employee {
     private Integer PostalCode;
 
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
+//    @JsonFormat(pattern = "yyyy-mm-dd")
     private String Start_date;
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
+//    @JsonFormat(pattern = "yyyy-mm-dd")
     private String End_date;
 
     private int Salary;
 
     private String Status;
 
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "Designation_Id")
+//    private Designation designation;
+
     @Override
     public String toString() {
         return "Employee{" +
                 "Emp_id=" + Emp_id +
-                ", Dest_id=" + Dest_id +
                 ", Name='" + Name + '\'' +
                 ", Mobile_No=" + Mobile_No +
                 ", Address='" + Address + '\'' +
@@ -52,6 +58,7 @@ public class Employee {
                 ", End_date='" + End_date + '\'' +
                 ", Salary=" + Salary +
                 ", Status='" + Status + '\'' +
+//                ", designation=" + designation +
                 '}';
     }
 }

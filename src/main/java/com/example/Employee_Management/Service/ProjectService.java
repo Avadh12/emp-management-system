@@ -49,4 +49,14 @@ public class ProjectService {
         projectRepository.deleteById(projectID);
     }
 
+    public void update(Project project1,Integer projectID){
+        Optional<Project>projectOptional = projectRepository.findById(projectID);
+        Project project2 = projectOptional.orElseGet(Project::new);
+//        project2.setProject_Id(project1.getProject_Id());
+        project2.setProjectName(project1.getProjectName());
+        projectRepository.save(project2);
+    }
+
+
+
 }

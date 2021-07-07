@@ -1,6 +1,7 @@
 package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.EmployeeService;
+import com.example.Employee_Management.entity.Designation;
 import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.model.EmployeeCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,11 @@ public class EmployeeController {
         employeeService.deleteAll();
     }
 
+
+    @PutMapping("/api/v1/Project/{userid}")
+    private void updateEmployee(@PathVariable Long userid ,@RequestBody Employee user2){
+        employeeService.update(user2,userid);
+    }
 
 
 }

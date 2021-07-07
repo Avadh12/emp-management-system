@@ -3,6 +3,7 @@ package com.example.Employee_Management.Service;
 import com.example.Employee_Management.Repository.TaskAllotmentRepository;
 import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.entity.Project;
+import com.example.Employee_Management.entity.Task;
 import com.example.Employee_Management.entity.TaskAllotment;
 import com.example.Employee_Management.model.DesignationCreateRequest;
 import com.example.Employee_Management.model.EmployeeCreateRequest;
@@ -28,6 +29,9 @@ public class TaskAllotmentService {
 
         allotment.setFeedback(request.getFeedback());
         allotment.setStatus(request.getStatus());
+        allotment.setTask_Id(request.getTask_Id());
+        allotment.setRanking(request.getRanking());
+        allotment.setStart_date(request.getStart_date());
 
         taskAllotmentRepository.save(allotment);
     }
@@ -47,6 +51,21 @@ public class TaskAllotmentService {
     }
     public void deleteByID(Integer taskAllotmentID){
         taskAllotmentRepository.deleteById(taskAllotmentID);
+    }
+
+    public void update(TaskAllotment taskAllotment1, Integer taskAllotmentID){
+        Optional<TaskAllotment> taskAllotmentOptional = taskAllotmentRepository.findById(taskAllotmentID);
+        TaskAllotment taskAllotment2 = taskAllotmentOptional.orElseGet(TaskAllotment::new);
+
+        taskAllotment2.setTaskAllotedId(taskAllotment1.getTaskAllotedId());
+        taskAllotment2.setTask_Id(taskAllotment1.getTask_Id());
+        taskAllotment2.setStatus(taskAllotment1.getStatus());
+        taskAllotment2.setFeedback(taskAllotment1.getFeedback());
+        taskAllotment2.setStart_date(taskAllotment1.getStart_date());
+        taskAllotment2.setRanking(taskAllotment1.getRanking());
+        taskAllotment2.setEnd_date(taskAllotment1.getEnd_date());
+        taskAllotment2.setEmp_id(taskAllotment1.getEmp_id());
+        taskAllotmentRepository.save(taskAllotment2);
     }
 
 }

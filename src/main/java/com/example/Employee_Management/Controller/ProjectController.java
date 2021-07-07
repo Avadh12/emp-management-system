@@ -45,7 +45,10 @@ public class ProjectController {
         projectService.deleteByID(projectid);
     }
 
-
+    @PutMapping("/api/v1/ProjectManage/{projectid}")
+    private void updateProject(@PathVariable Integer projectid ,@RequestBody Project project2){
+        projectService.update(project2,projectid);
+    }
 
 
 }

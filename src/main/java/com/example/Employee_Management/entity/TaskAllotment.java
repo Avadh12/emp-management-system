@@ -25,10 +25,10 @@ public class TaskAllotment {
     private Integer Ranking;
     private String feedback;
     private String status;
-    @JsonFormat(pattern = "yyyy-mm-dd")
+  //  @JsonFormat(pattern = "yyyy-mm-dd")
     private String Start_date;
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    //@JsonFormat(pattern = "yyyy-mm-dd")
     private String End_date;
 
     @Override

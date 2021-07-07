@@ -44,6 +44,11 @@ public class TaskController {
         taskService.deleteByID(taskid);
     }
 
+    @PutMapping("/api/v1/Task/{taskid}")
+    private void updateTask(@PathVariable Integer taskid ,@RequestBody Task task2){
+        taskService.update(task2,taskid);
+    }
+
 }
 
 

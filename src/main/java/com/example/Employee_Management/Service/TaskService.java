@@ -23,6 +23,7 @@ public class TaskService {
 
         Task task = new Task();
         task.setTaskDescription(request.getTaskDescription());
+        task.setProject_id(request.getProject_id());
 
 
         taskRepository.save(task);
@@ -47,6 +48,19 @@ public class TaskService {
     public void deleteByID(Integer taskID){
         taskRepository.deleteById(taskID);
     }
+
+
+    public void update(Task task1,Integer taskID){
+        Optional<Task> taskOptional = taskRepository.findById(taskID);
+        Task task2 = taskOptional.orElseGet(Task::new);
+
+        task2.setTask_Id(task1.getTask_Id());
+        task2.setTaskDescription(task1.getTaskDescription());
+        task2.setProject_id(task1.getProject_id());
+        taskRepository.save(task2);
+    }
+
+
 
 
 }
