@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class TaskAllotmentCreateRequest {
     private  Integer Task_Id;
-    private Integer Emp_id;
+    private long Emp_id;
     private Integer Ranking;
     private String feedback;
     private String status;

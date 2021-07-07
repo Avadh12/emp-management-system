@@ -22,7 +22,10 @@ public class EmployeeService {
         if (request.getName().equals("")) throw new RuntimeException("Throwing runtime Error");
         Employee emp = new Employee();
         emp.setName(request.getName());
-        emp.setDest_id(request.getDest_id());
+        Designation designation = new Designation();
+        designation.setDesignation_Id(request.getDest_id());
+
+        emp.setDesignation(designation);
         emp.setMobile_No(request.getMobile_No());
         emp.setAddress(request.getAddress());
         emp.setPostalCode(request.getPostalCode());
@@ -31,6 +34,7 @@ public class EmployeeService {
         emp.setSalary(request.getSalary());
         emp.setStatus(request.getStatus());
        // emp.setDesignation(request.getDesignation());
+
 
         employeeRepository.save(emp);
     }
@@ -62,7 +66,7 @@ public class EmployeeService {
         Optional<Employee>employeeOptional = employeeRepository.findById(userID);
         Employee user2 = employeeOptional.orElseGet(Employee::new);
 
-        user2.setDest_id(user1.getDest_id());
+        user2.setDesignation(user1.getDesignation());
         user2.setName(user1.getName());
         user2.setPostalCode(user1.getPostalCode());
         user2.setAddress(user1.getAddress());

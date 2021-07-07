@@ -18,6 +18,6 @@ public class EmployeeCreateRequest {
     private String End_date;
     private Integer Salary;
     private String Status;
-    //private Designation designation;
+    private Designation designation;
 
 }

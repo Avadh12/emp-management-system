@@ -18,9 +18,15 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Emp_id;
+   // private Integer Dest_id;
+  //  @MapsId("Dest_id")
+    @JoinColumns({
+            @JoinColumn(name="dest_id_fk", referencedColumnName="Designation_Id")
+
+    })
+    @OneToOne Designation designation;
 
 
-    private int Dest_id;
 
 
     private String Name;
