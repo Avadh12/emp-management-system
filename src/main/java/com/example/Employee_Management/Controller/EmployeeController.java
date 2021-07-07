@@ -42,11 +42,9 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/api/v1/Project")
-    private void DeleteAllStudent() {
+    private void DeleteAllEmployee() {
         employeeService.deleteAll();
     }
-
-
 
 
 

@@ -35,6 +35,9 @@ public class DesignationController {
         return ResponseEntity.ok(designationService.getDesignationByID(designationid));
     }
 
-
+    @DeleteMapping("/api/v1/Designation/{designationid}")
+    private void DeleteDesignation(@PathVariable Integer designationid){
+        designationService.deleteByID(designationid);
+    }
 
 }

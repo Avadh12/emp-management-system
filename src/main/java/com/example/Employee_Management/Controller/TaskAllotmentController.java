@@ -39,5 +39,10 @@ public class TaskAllotmentController {
         return ResponseEntity.ok(taskAllotmentService.getTaskAllotmentByID(taskAllotmentid));
     }
 
+    @DeleteMapping("/api/v1/TaskAllotment/{taskAllotmentid}")
+    private void DeleteTaskAllotment(@PathVariable Integer taskAllotmentid){
+        taskAllotmentService.deleteByID(taskAllotmentid);
+    }
+
 
 }

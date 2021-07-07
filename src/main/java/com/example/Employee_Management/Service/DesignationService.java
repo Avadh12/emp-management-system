@@ -45,4 +45,8 @@ public class DesignationService {
         return designationOptional.orElseGet(Designation::new);
     }
 
+    public void deleteByID(Integer designationID){
+        designationRepository.deleteById(designationID);
+    }
+
 }

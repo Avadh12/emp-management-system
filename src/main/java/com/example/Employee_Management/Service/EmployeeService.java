@@ -43,6 +43,8 @@ public class EmployeeService {
         employeeRepository.deleteById(userID);
     }
 
+
+
     public List<Employee> getAll()
     {
         List<Employee>employees   = new ArrayList<Employee>();
@@ -54,8 +56,21 @@ public class EmployeeService {
         employeeRepository.deleteAll();
     }
 
+    public void update(Employee emp,Long userID){
+        Optional<Employee> employeeOptional = employeeRepository.findById(userID);
+        Employee emp1 = employeeOptional.orElseGet(Employee::new);
 
-
-
+        emp1.setEmp_id(emp.getEmp_id());
+        emp1.setDest_id(emp.getDest_id());
+        emp1.setName(emp.getName());
+        emp1.setMobile_No(emp.getMobile_No());
+        emp1.setStatus(emp.getStatus());
+        emp1.setSalary(emp.getSalary());
+        emp1.setStart_date(emp.getStart_date());
+        emp1.setEnd_date(emp.getEnd_date());
+        emp1.setAddress(emp.getAddress());
+        emp1.setPostalCode(emp.getPostalCode());
+        employeeRepository.save(emp1);
+    }
 
 }

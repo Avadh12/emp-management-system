@@ -40,6 +40,12 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getProjectByID(projectid));
     }
 
+    @DeleteMapping("/api/v1/ProjectManage/{projectid}")
+    private void DeleteProject(@PathVariable Integer projectid){
+        projectService.deleteByID(projectid);
+    }
+
+
 
 
 }

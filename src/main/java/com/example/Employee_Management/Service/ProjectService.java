@@ -45,5 +45,8 @@ public class ProjectService {
         return projectOptional.orElseGet(Project::new);
     }
 
+    public void deleteByID(Integer projectID){
+        projectRepository.deleteById(projectID);
+    }
 
 }

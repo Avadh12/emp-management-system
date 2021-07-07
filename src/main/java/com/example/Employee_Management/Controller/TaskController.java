@@ -38,6 +38,12 @@ public class TaskController {
     public ResponseEntity<Task>getTaskByID(@PathVariable Integer taskid) {
         return ResponseEntity.ok(taskService.getTaskByID(taskid));
     }
+
+    @DeleteMapping("/api/v1/Task/{taskid}")
+    private void DeleteTask(@PathVariable Integer taskid){
+        taskService.deleteByID(taskid);
+    }
+
 }
 
 

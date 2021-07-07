@@ -45,6 +45,8 @@ public class TaskAllotmentService {
         Optional<TaskAllotment>taskAllotmentOptional = taskAllotmentRepository.findById(taskAllotmentID);
         return taskAllotmentOptional.orElseGet(TaskAllotment::new);
     }
-
+    public void deleteByID(Integer taskAllotmentID){
+        taskAllotmentRepository.deleteById(taskAllotmentID);
+    }
 
 }
