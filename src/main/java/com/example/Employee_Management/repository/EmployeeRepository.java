@@ -1,4 +1,4 @@
-package com.example.Employee_Management.Repository;
+package com.example.Employee_Management.repository;
 
 import com.example.Employee_Management.entity.Employee;
 
@@ -12,6 +12,7 @@ import java.util.List;
 public interface EmployeeRepository extends CrudRepository<Employee,Long> {
 
     List<Employee> findAll();
+
 
 
 

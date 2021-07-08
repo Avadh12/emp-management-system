@@ -1,7 +1,8 @@
-package com.example.Employee_Management.Service;
+package com.example.Employee_Management.service;
 
 
-import com.example.Employee_Management.Repository.EmployeeRepository;
+import com.example.Employee_Management.repository.EmployeeRepository;
+import com.example.Employee_Management.entity.Designation;
 import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.model.EmployeeCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,19 @@ public class EmployeeService {
         if (request.getName().equals("")) throw new RuntimeException("Throwing runtime Error");
         Employee emp = new Employee();
         emp.setName(request.getName());
-        emp.setDest_id(request.getDest_id());
+        Designation designation = new Designation();
+        designation.setDesignation_Id(request.getDest_id());
+
+        emp.setDesignation(designation);
         emp.setMobile_No(request.getMobile_No());
         emp.setAddress(request.getAddress());
         emp.setPostalCode(request.getPostalCode());
-        emp.setStart_date(request.getStartDate());
-        emp.setEnd_date(request.getEndDate());
+        emp.setStart_date(request.getStart_date());
+        emp.setEnd_date(request.getEnd_date());
         emp.setSalary(request.getSalary());
         emp.setStatus(request.getStatus());
+
+
 
         employeeRepository.save(emp);
     }
@@ -56,21 +62,25 @@ public class EmployeeService {
         employeeRepository.deleteAll();
     }
 
-    public void update(Employee emp,Long userID){
-        Optional<Employee> employeeOptional = employeeRepository.findById(userID);
-        Employee emp1 = employeeOptional.orElseGet(Employee::new);
+    public void update(Employee user1, Long userID){
+        Optional<Employee>employeeOptional = employeeRepository.findById(userID);
+        Employee user2 = employeeOptional.orElseGet(Employee::new);
 
-        emp1.setEmp_id(emp.getEmp_id());
-        emp1.setDest_id(emp.getDest_id());
-        emp1.setName(emp.getName());
-        emp1.setMobile_No(emp.getMobile_No());
-        emp1.setStatus(emp.getStatus());
-        emp1.setSalary(emp.getSalary());
-        emp1.setStart_date(emp.getStart_date());
-        emp1.setEnd_date(emp.getEnd_date());
-        emp1.setAddress(emp.getAddress());
-        emp1.setPostalCode(emp.getPostalCode());
-        employeeRepository.save(emp1);
+        user2.setDesignation(user1.getDesignation());
+        user2.setName(user1.getName());
+        user2.setPostalCode(user1.getPostalCode());
+        user2.setAddress(user1.getAddress());
+        user2.setEnd_date(user1.getEnd_date());
+        user2.setStart_date(user1.getStart_date());
+        user2.setSalary(user1.getSalary());
+        user2.setStatus(user1.getStatus());
+        user2.setMobile_No(user1.getMobile_No());
+
+
+        employeeRepository.save(user2);
     }
+
+
+
 
 }

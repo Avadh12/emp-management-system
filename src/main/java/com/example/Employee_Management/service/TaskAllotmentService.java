@@ -1,12 +1,9 @@
-package com.example.Employee_Management.Service;
+package com.example.Employee_Management.service;
 
-import com.example.Employee_Management.Repository.TaskAllotmentRepository;
+import com.example.Employee_Management.repository.TaskAllotmentRepository;
 import com.example.Employee_Management.entity.Employee;
-import com.example.Employee_Management.entity.Project;
+import com.example.Employee_Management.entity.Task;
 import com.example.Employee_Management.entity.TaskAllotment;
-import com.example.Employee_Management.model.DesignationCreateRequest;
-import com.example.Employee_Management.model.EmployeeCreateRequest;
-import com.example.Employee_Management.model.ProjectCreateRequest;
 import com.example.Employee_Management.model.TaskAllotmentCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +21,20 @@ public class TaskAllotmentService {
 
         TaskAllotment allotment = new TaskAllotment();
         allotment.setEnd_date(request.getEnd_date());
-        allotment.setEmp_id(request.getEmp_id());
+        Employee employee = new Employee();
+        employee.setEmp_id(request.getEmp_id());
+        allotment.setEmployee(employee);
+
+
 
         allotment.setFeedback(request.getFeedback());
         allotment.setStatus(request.getStatus());
+        Task task = new Task();
+        task.setTask_Id(request.getTask_Id());
+        allotment.setTask(task);
+     //   allotment.setTask_Id(request.getTask_Id());
+        allotment.setRanking(request.getRanking());
+        allotment.setStart_date(request.getStart_date());
 
         taskAllotmentRepository.save(allotment);
     }
@@ -47,6 +54,21 @@ public class TaskAllotmentService {
     }
     public void deleteByID(Integer taskAllotmentID){
         taskAllotmentRepository.deleteById(taskAllotmentID);
+    }
+
+    public void update(TaskAllotment taskAllotment1, Integer taskAllotmentID){
+        Optional<TaskAllotment> taskAllotmentOptional = taskAllotmentRepository.findById(taskAllotmentID);
+        TaskAllotment taskAllotment2 = taskAllotmentOptional.orElseGet(TaskAllotment::new);
+
+        taskAllotment2.setTaskAllotedId(taskAllotment1.getTaskAllotedId());
+        taskAllotment2.setTask(taskAllotment1.getTask());
+        taskAllotment2.setStatus(taskAllotment1.getStatus());
+        taskAllotment2.setFeedback(taskAllotment1.getFeedback());
+        taskAllotment2.setStart_date(taskAllotment1.getStart_date());
+        taskAllotment2.setRanking(taskAllotment1.getRanking());
+        taskAllotment2.setEnd_date(taskAllotment1.getEnd_date());
+        taskAllotment2.setEmployee(taskAllotment1.getEmployee());
+        taskAllotmentRepository.save(taskAllotment2);
     }
 
 }

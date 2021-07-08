@@ -1,10 +1,10 @@
-package com.example.Employee_Management.Service;
+package com.example.Employee_Management.service;
 
-import com.example.Employee_Management.Repository.TaskRepository;
-import com.example.Employee_Management.entity.Employee;
+import com.example.Employee_Management.repository.TaskRepository;
+
+import com.example.Employee_Management.entity.Project;
 import com.example.Employee_Management.entity.Task;
-import com.example.Employee_Management.entity.TaskAllotment;
-import com.example.Employee_Management.model.ProjectCreateRequest;
+
 import com.example.Employee_Management.model.TaskCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +24,11 @@ public class TaskService {
         Task task = new Task();
         task.setTaskDescription(request.getTaskDescription());
 
-
+        Project project = new Project();
+        project.setProject_Id((request.getProject_id()));
+        task.setProject(project);
         taskRepository.save(task);
+
 
     }
     public List<Task> getAll(){
@@ -47,6 +50,19 @@ public class TaskService {
     public void deleteByID(Integer taskID){
         taskRepository.deleteById(taskID);
     }
+
+
+    public void update(Task task1,Integer taskID){
+        Optional<Task> taskOptional = taskRepository.findById(taskID);
+        Task task2 = taskOptional.orElseGet(Task::new);
+
+        task2.setTask_Id(task1.getTask_Id());
+        task2.setTaskDescription(task1.getTaskDescription());
+        task2.setProject(task1.getProject());
+        taskRepository.save(task2);
+    }
+
+
 
 
 }

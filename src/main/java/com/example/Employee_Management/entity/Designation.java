@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -21,11 +19,14 @@ public class Designation {
     private Integer Designation_Id;
     private String DesignatedAs;
 
+
+
     @Override
     public String toString() {
         return "Designation{" +
                 "Designation_Id=" + Designation_Id +
                 ", DesignatedAs='" + DesignatedAs + '\'' +
+//                ", employee=" + employee +
                 '}';
     }
 }

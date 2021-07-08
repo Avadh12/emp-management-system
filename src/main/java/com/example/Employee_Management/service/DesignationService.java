@@ -1,10 +1,10 @@
-package com.example.Employee_Management.Service;
+package com.example.Employee_Management.service;
 
-import com.example.Employee_Management.Repository.DesignationRepository;
+import com.example.Employee_Management.repository.DesignationRepository;
 import com.example.Employee_Management.entity.Designation;
-import com.example.Employee_Management.entity.Employee;
+
 import com.example.Employee_Management.model.DesignationCreateRequest;
-import com.example.Employee_Management.model.EmployeeCreateRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +48,16 @@ public class DesignationService {
     public void deleteByID(Integer designationID){
         designationRepository.deleteById(designationID);
     }
+
+
+    public void update(Designation designation1,Integer designationID){
+        Optional<Designation>designationOptional = designationRepository.findById(designationID);
+        Designation designation2 = designationOptional.orElseGet(Designation::new);
+
+
+        designation2.setDesignatedAs(designation1.getDesignatedAs());
+        designationRepository.save(designation2);
+    }
+
 
 }

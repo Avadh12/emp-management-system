@@ -6,10 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 @Getter
 @Setter
@@ -20,23 +18,28 @@ public class TaskAllotment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TaskAllotedId;
-    private Integer Task_Id;
-    private Integer Emp_id;
+
+    @JoinColumn(name="task_id_fk", referencedColumnName="Task_Id")
+    @OneToOne Task task;
+
+            @JoinColumn(name="emp_id_fk_1", referencedColumnName="Emp_id")
+    @OneToOne Employee employee;
+
     private Integer Ranking;
     private String feedback;
     private String status;
-    @JsonFormat(pattern = "yyyy-mm-dd")
+  //  @JsonFormat(pattern = "yyyy-mm-dd")
     private String Start_date;
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    //@JsonFormat(pattern = "yyyy-mm-dd")
     private String End_date;
 
     @Override
     public String toString() {
         return "TaskAllotment{" +
                 "TaskAllotedId=" + TaskAllotedId +
-                ", Task_Id=" + Task_Id +
-                ", Emp_id=" + Emp_id +
+    //            ", Task_Id=" + Task_Id +
+     //           ", Emp_id=" + Emp_id +
                 ", Ranking=" + Ranking +
                 ", feedback='" + feedback + '\'' +
                 ", status='" + status + '\'' +
