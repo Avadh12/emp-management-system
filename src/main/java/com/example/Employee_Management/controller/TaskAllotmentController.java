@@ -37,8 +37,8 @@ public class TaskAllotmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskAllotment>getTaskAllotmentByID(@PathVariable Integer id){
-        return ResponseEntity.ok(taskAllotmentService.getTaskAllotmentByID(id));
+    public TaskAllotment getTaskAllotmentByID(@PathVariable Integer id){
+        return taskAllotmentService.getTaskAllotmentByID(id);
     }
 
     @DeleteMapping("/{id}")

@@ -34,8 +34,8 @@ public class DesignationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Designation>getDesignationByID(@PathVariable Integer id){
-        return ResponseEntity.ok(designationService.getDesignationByID(id));
+    public Designation getDesignationByID(@PathVariable Integer id){
+        return designationService.getDesignationByID(id);
     }
 
 
