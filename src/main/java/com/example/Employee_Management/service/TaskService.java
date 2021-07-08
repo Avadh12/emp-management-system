@@ -19,13 +19,13 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public void createTask(TaskCreateRequest request) {
-        if (request.getTaskDescription().equals("")) throw new RuntimeException("Throwing runtime Error");
+        if (request.getTaskDescription().equals("")) throw new RuntimeException("");
 
         Task task = new Task();
         task.setTaskDescription(request.getTaskDescription());
 
         Project project = new Project();
-        project.setProject_Id((request.getProject_id()));
+        project.setProjectId((request.getProjectId()));
         task.setProject(project);
         taskRepository.save(task);
 
@@ -43,7 +43,8 @@ public class TaskService {
 
     public Task getTaskByID(Integer taskID){
         Optional<Task>taskOptional = taskRepository.findById(taskID);
-        return taskOptional.orElseGet(Task::new);
+        Task task=new Task();
+        return taskOptional.orElse(task);
 
     }
 
@@ -52,17 +53,14 @@ public class TaskService {
     }
 
 
-    public void update(Task task1,Integer taskID){
+    public void update(Task task,Integer taskID){
         Optional<Task> taskOptional = taskRepository.findById(taskID);
-        Task task2 = taskOptional.orElseGet(Task::new);
+        Task taskObject=new Task();
+        Task taskObj = taskOptional.orElse(taskObject);
 
-        task2.setTask_Id(task1.getTask_Id());
-        task2.setTaskDescription(task1.getTaskDescription());
-        task2.setProject(task1.getProject());
-        taskRepository.save(task2);
+        taskObj.setTaskId(task.getTaskId());
+        taskObj.setTaskDescription(task.getTaskDescription());
+        taskObj.setProject(task.getProject());
+        taskRepository.save(taskObj);
     }
-
-
-
-
 }

@@ -17,12 +17,12 @@ public class TaskAllotmentService {
     @Autowired
     private TaskAllotmentRepository taskAllotmentRepository;
     public void createTaskAllotment(TaskAllotmentCreateRequest request){
-        if (request.getEnd_date().equals("")) throw new RuntimeException("Throwing runtime Error");
+        if (request.getEndDate().equals("")) throw new RuntimeException("");
 
         TaskAllotment allotment = new TaskAllotment();
-        allotment.setEnd_date(request.getEnd_date());
+        allotment.setEndDate(request.getEndDate());
         Employee employee = new Employee();
-        employee.setEmp_id(request.getEmp_id());
+        employee.setEmpId(request.getEmpId());
         allotment.setEmployee(employee);
 
 
@@ -30,11 +30,11 @@ public class TaskAllotmentService {
         allotment.setFeedback(request.getFeedback());
         allotment.setStatus(request.getStatus());
         Task task = new Task();
-        task.setTask_Id(request.getTask_Id());
+        task.setTaskId(request.getTaskId());
         allotment.setTask(task);
-     //   allotment.setTask_Id(request.getTask_Id());
+     //   allotment.setTaskId(request.getTaskId());
         allotment.setRanking(request.getRanking());
-        allotment.setStart_date(request.getStart_date());
+        allotment.setStartDate(request.getStartDate());
 
         taskAllotmentRepository.save(allotment);
     }
@@ -50,25 +50,31 @@ public class TaskAllotmentService {
 
     public TaskAllotment getTaskAllotmentByID(Integer taskAllotmentID){
         Optional<TaskAllotment>taskAllotmentOptional = taskAllotmentRepository.findById(taskAllotmentID);
-        return taskAllotmentOptional.orElseGet(TaskAllotment::new);
+        TaskAllotment taskAllotment=new TaskAllotment();
+        return taskAllotmentOptional.orElse(taskAllotment);
     }
     public void deleteByID(Integer taskAllotmentID){
         taskAllotmentRepository.deleteById(taskAllotmentID);
     }
 
-    public void update(TaskAllotment taskAllotment1, Integer taskAllotmentID){
+    public void update(TaskAllotment taskAllotment, Integer taskAllotmentID){
         Optional<TaskAllotment> taskAllotmentOptional = taskAllotmentRepository.findById(taskAllotmentID);
-        TaskAllotment taskAllotment2 = taskAllotmentOptional.orElseGet(TaskAllotment::new);
+        TaskAllotment taskAllotmentObj=new TaskAllotment();
+        TaskAllotment taskAllot = taskAllotmentOptional.orElse(taskAllotmentObj);
 
-        taskAllotment2.setTaskAllotedId(taskAllotment1.getTaskAllotedId());
-        taskAllotment2.setTask(taskAllotment1.getTask());
-        taskAllotment2.setStatus(taskAllotment1.getStatus());
-        taskAllotment2.setFeedback(taskAllotment1.getFeedback());
-        taskAllotment2.setStart_date(taskAllotment1.getStart_date());
-        taskAllotment2.setRanking(taskAllotment1.getRanking());
-        taskAllotment2.setEnd_date(taskAllotment1.getEnd_date());
-        taskAllotment2.setEmployee(taskAllotment1.getEmployee());
-        taskAllotmentRepository.save(taskAllotment2);
+        taskAllot.setTaskAllotedId(taskAllotment.getTaskAllotedId());
+        taskAllot.setTask(taskAllotment.getTask());
+        taskAllot.setStatus(taskAllotment.getStatus());
+        taskAllot.setFeedback(taskAllotment.getFeedback());
+        taskAllot.setStartDate(taskAllotment.getStartDate());
+        taskAllot.setRanking(taskAllotment.getRanking());
+        taskAllot.setEndDate(taskAllotment.getEndDate());
+        taskAllot.setEmployee(taskAllotment.getEmployee());
+        taskAllotmentRepository.save(taskAllot);
     }
 
+//    public List<TaskAllotment>getTaskAllotmentByRanking(Integer ranking){
+//        return taskAllotmentRepository.getTaskAllotmentByByRanking(ranking);
+//
+//    }
 }

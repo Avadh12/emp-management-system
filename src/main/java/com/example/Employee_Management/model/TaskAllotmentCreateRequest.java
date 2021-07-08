@@ -8,11 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class TaskAllotmentCreateRequest {
-    private  Integer Task_Id;
-    private long Emp_id;
-    private Integer Ranking;
+    private  Integer taskId;
+    private long empId;
+    private Integer ranking;
     private String feedback;
     private String status;
-    private String Start_date;
-    private String End_date;
+    private String startDate;
+    private String endDate;
 }

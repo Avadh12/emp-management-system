@@ -18,15 +18,6 @@ import javax.persistence.Id;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Project_Id;
-
-    @Override
-    public String toString() {
-        return "Project{" +
-                "Project_Id=" + Project_Id +
-                ", ProjectName='" + ProjectName + '\'' +
-                '}';
-    }
-
-    private String ProjectName;
+    private Integer projectId;
+    private String projectName;
 }

@@ -6,6 +6,7 @@ import com.example.Employee_Management.entity.Designation;
 import com.example.Employee_Management.model.DesignationCreateRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,8 +44,9 @@ public class DesignationController {
     }
 
     @PutMapping("/{id}")
-    private void updateDesignation(@PathVariable Integer id, @RequestBody Designation designation2){
-        designationService.update(designation2, id);
+    @ResponseStatus(HttpStatus.OK)
+    private void changeDesignation(@PathVariable Integer id, @RequestBody Designation designation){
+        designationService.update(designation, id);
     }
 
 }

@@ -1,11 +1,13 @@
 package com.example.Employee_Management.controller;
 
+import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.service.TaskAllotmentService;
 
 import com.example.Employee_Management.entity.TaskAllotment;
 import com.example.Employee_Management.model.TaskAllotmentCreateRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,9 +48,17 @@ public class TaskAllotmentController {
 
     @PutMapping("/{id}")
     private void updateTaskAllotment(@PathVariable Integer id
-            ,@RequestBody TaskAllotment taskAllotment2){
-        taskAllotmentService.update(taskAllotment2,id);
+            ,@RequestBody TaskAllotment taskAllotment){
+        taskAllotmentService.update(taskAllotment,id);
     }
+
+//    @GetMapping("/{ta}")
+//    public ResponseEntity<List<TaskAllotment>> getTaskAllotmentByRanking(@PathVariable Integer ranking){
+//        return new ResponseEntity<>(taskAllotmentService.getTaskAllotmentByRanking(ranking), HttpStatus.OK);
+//    }
+
+
+
 
 
 }

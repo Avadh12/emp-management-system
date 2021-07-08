@@ -9,5 +9,5 @@ import lombok.*;
 @ToString
 public class ProjectCreateRequest {
 
-    private String ProjectName;
+    private String projectName;
 }

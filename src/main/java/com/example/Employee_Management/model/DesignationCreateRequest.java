@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 public class DesignationCreateRequest {
 
-    private String DesignatedAs;
+    private String designatedAs;
 
 }

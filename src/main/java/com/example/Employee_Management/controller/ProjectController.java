@@ -46,8 +46,8 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    private void updateProject(@PathVariable Integer id, @RequestBody Project project2){
-        projectService.update(project2, id);
+    private void updateProject(@PathVariable Integer id, @RequestBody Project project){
+        projectService.update(project, id);
     }
 
 

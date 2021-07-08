@@ -18,11 +18,8 @@ public class ProjectService {
     private ProjectRepository projectRepository;
 
     public void createProject(ProjectCreateRequest request) {
-        if (request.getProjectName().equals("")) throw new RuntimeException("Throwing runtime Error");
-
+        if (request.getProjectName().equals("")) throw new RuntimeException("");
         Project project = new Project();
-
-
         project.setProjectName(request.getProjectName());
 
         projectRepository.save(project);
@@ -41,21 +38,20 @@ public class ProjectService {
 
     public Project getProjectByID(Integer projectID){
         Optional<Project> projectOptional = projectRepository.findById(projectID);
-        return projectOptional.orElseGet(Project::new);
+        Project project=new Project();
+        return projectOptional.orElse(project);
     }
 
     public void deleteByID(Integer projectID){
         projectRepository.deleteById(projectID);
     }
 
-    public void update(Project project1,Integer projectID){
+    public void update(Project project,Integer projectID){
         Optional<Project>projectOptional = projectRepository.findById(projectID);
-        Project project2 = projectOptional.orElseGet(Project::new);
+        Project projectObject=new Project();
+        Project projectObj = projectOptional.orElse(projectObject);
 
-        project2.setProjectName(project1.getProjectName());
-        projectRepository.save(project2);
+        projectObj.setProjectName(project.getProjectName());
+        projectRepository.save(projectObj);
     }
-
-
-
 }

@@ -15,19 +15,10 @@ import javax.persistence.*;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Task_Id;
-    private String TaskDescription;
-    @JoinColumn(name="project_id_fk", referencedColumnName="Project_Id")
+    private Integer taskId;
+    private String taskDescription;
+    @JoinColumn(name="projectIdFk", referencedColumnName="projectId")
     @OneToOne Project project;
 
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "Task_Id=" + Task_Id +
-                ", TaskDescription='" + TaskDescription + '\'' +
-     //           ", Project_id=" + Project_id +
-                '}';
-    }
 }
 

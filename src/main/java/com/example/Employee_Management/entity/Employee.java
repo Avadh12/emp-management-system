@@ -5,63 +5,30 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.engine.internal.Cascade;
-
 import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Employee")
+@Entity(name = "employee")
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Emp_id;
+    private Long empId;
 
     @JoinColumns({
-            @JoinColumn(name="dest_id_fk", referencedColumnName="Designation_Id")
-
+            @JoinColumn(name="destIdFk", referencedColumnName="designationId")
     })
     @OneToOne Designation designation;
+    private String name;
+    private Integer mobileNo;
+    private String address;
+    private Integer postalCode;
+    private String startDate;
+    private String endDate;
+    private int salary;
+    private String status;
 
-
-
-
-    private String Name;
-
-    private Integer Mobile_No;
-
-    private String Address;
-
-    private Integer PostalCode;
-
-
-//    @JsonFormat(pattern = "yyyy-mm-dd")
-    private String Start_date;
-
-//    @JsonFormat(pattern = "yyyy-mm-dd")
-    private String End_date;
-
-    private int Salary;
-
-    private String Status;
-
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "Emp_id=" + Emp_id +
-                ", Name='" + Name + '\'' +
-                ", Mobile_No=" + Mobile_No +
-                ", Address='" + Address + '\'' +
-                ", PostalCode=" + PostalCode +
-                ", Start_date='" + Start_date + '\'' +
-                ", End_date='" + End_date + '\'' +
-                ", Salary=" + Salary +
-                ", Status='" + Status + '\'' +
-//                ", designation=" + designation +
-                '}';
-    }
 }
 

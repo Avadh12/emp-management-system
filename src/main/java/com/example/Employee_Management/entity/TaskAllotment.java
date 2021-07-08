@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 
@@ -13,38 +12,22 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity()
 public class TaskAllotment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer TaskAllotedId;
+    private Integer taskAllotedId;
 
-    @JoinColumn(name="task_id_fk", referencedColumnName="Task_Id")
+    @JoinColumn(name="taskIdFk", referencedColumnName="taskId")
     @OneToOne Task task;
 
-            @JoinColumn(name="emp_id_fk_1", referencedColumnName="Emp_id")
+    @JoinColumn(name="empIdFk_1", referencedColumnName="empId")
     @OneToOne Employee employee;
 
-    private Integer Ranking;
+    private Integer ranking;  // may be 1,2,3,....
     private String feedback;
     private String status;
-  //  @JsonFormat(pattern = "yyyy-mm-dd")
-    private String Start_date;
+    private String startDate;
+    private String endDate;
 
-    //@JsonFormat(pattern = "yyyy-mm-dd")
-    private String End_date;
-
-    @Override
-    public String toString() {
-        return "TaskAllotment{" +
-                "TaskAllotedId=" + TaskAllotedId +
-    //            ", Task_Id=" + Task_Id +
-     //           ", Emp_id=" + Emp_id +
-                ", Ranking=" + Ranking +
-                ", feedback='" + feedback + '\'' +
-                ", status='" + status + '\'' +
-                ", Start_date='" + Start_date + '\'' +
-                ", End_date='" + End_date + '\'' +
-                '}';
-    }
 }

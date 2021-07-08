@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 public class TaskCreateRequest {
 
-    private Integer Project_id;
-    private String TaskDescription;
+    private Integer projectId;
+    private String taskDescription;
 }
