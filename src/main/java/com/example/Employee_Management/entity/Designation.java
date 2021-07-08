@@ -18,8 +18,7 @@ public class Designation {
     private Integer Designation_Id;
     private String DesignatedAs;
 
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "designation")
-//    private Employee employee;
+
 
     @Override
     public String toString() {

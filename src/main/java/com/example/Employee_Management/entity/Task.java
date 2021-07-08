@@ -19,7 +19,7 @@ public class Task {
     private String TaskDescription;
     @JoinColumn(name="project_id_fk", referencedColumnName="Project_Id")
     @OneToOne Project project;
-   // private Integer Project_id;
+
 
     @Override
     public String toString() {

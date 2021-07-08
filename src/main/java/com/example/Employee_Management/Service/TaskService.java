@@ -1,11 +1,10 @@
 package com.example.Employee_Management.Service;
 
 import com.example.Employee_Management.Repository.TaskRepository;
-import com.example.Employee_Management.entity.Employee;
+
 import com.example.Employee_Management.entity.Project;
 import com.example.Employee_Management.entity.Task;
-import com.example.Employee_Management.entity.TaskAllotment;
-import com.example.Employee_Management.model.ProjectCreateRequest;
+
 import com.example.Employee_Management.model.TaskCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class TaskService {
 
         Task task = new Task();
         task.setTaskDescription(request.getTaskDescription());
-   //     task.setProject_id(request.getProject_id());
+
         Project project = new Project();
         project.setProject_Id((request.getProject_id()));
         task.setProject(project);

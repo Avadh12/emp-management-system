@@ -1,12 +1,10 @@
 package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.TaskAllotmentService;
-import com.example.Employee_Management.entity.Employee;
-import com.example.Employee_Management.entity.Project;
-import com.example.Employee_Management.entity.Task;
+
 import com.example.Employee_Management.entity.TaskAllotment;
 import com.example.Employee_Management.model.TaskAllotmentCreateRequest;
-import com.example.Employee_Management.model.TaskCreateRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

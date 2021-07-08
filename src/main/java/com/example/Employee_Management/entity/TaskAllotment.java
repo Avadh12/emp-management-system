@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -18,22 +18,13 @@ public class TaskAllotment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TaskAllotedId;
-//   @MapsId("task_ID")
-  //  @JoinColumns({
 
-
- //   })
     @JoinColumn(name="task_id_fk", referencedColumnName="Task_Id")
     @OneToOne Task task;
-  //  private Integer Task_Id;
-  //  @MapsId("userId")
- //   @JoinColumns({
 
-
-   // })
             @JoinColumn(name="emp_id_fk_1", referencedColumnName="Emp_id")
     @OneToOne Employee employee;
- //   private Integer Emp_id;
+
     private Integer Ranking;
     private String feedback;
     private String status;

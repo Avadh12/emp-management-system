@@ -18,8 +18,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Emp_id;
-   // private Integer Dest_id;
-  //  @MapsId("Dest_id")
+
     @JoinColumns({
             @JoinColumn(name="dest_id_fk", referencedColumnName="Designation_Id")
 
@@ -48,9 +47,6 @@ public class Employee {
 
     private String Status;
 
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "Designation_Id")
-//    private Designation designation;
 
     @Override
     public String toString() {

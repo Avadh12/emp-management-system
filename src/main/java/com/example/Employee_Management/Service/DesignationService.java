@@ -2,10 +2,9 @@ package com.example.Employee_Management.Service;
 
 import com.example.Employee_Management.Repository.DesignationRepository;
 import com.example.Employee_Management.entity.Designation;
-import com.example.Employee_Management.entity.Employee;
-import com.example.Employee_Management.entity.Task;
+
 import com.example.Employee_Management.model.DesignationCreateRequest;
-import com.example.Employee_Management.model.EmployeeCreateRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +54,7 @@ public class DesignationService {
         Optional<Designation>designationOptional = designationRepository.findById(designationID);
         Designation designation2 = designationOptional.orElseGet(Designation::new);
 
-//        designation2.setDesignation_Id(designation1.getDesignation_Id());
+
         designation2.setDesignatedAs(designation1.getDesignatedAs());
         designationRepository.save(designation2);
     }

@@ -2,10 +2,9 @@ package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.DesignationService;
 import com.example.Employee_Management.entity.Designation;
-import com.example.Employee_Management.entity.Employee;
-import com.example.Employee_Management.entity.Task;
+
 import com.example.Employee_Management.model.DesignationCreateRequest;
-import com.example.Employee_Management.model.TaskCreateRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

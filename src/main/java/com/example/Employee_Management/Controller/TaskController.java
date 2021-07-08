@@ -1,17 +1,16 @@
 package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.TaskService;
-import com.example.Employee_Management.entity.Employee;
+
 import com.example.Employee_Management.entity.Task;
-import com.example.Employee_Management.entity.TaskAllotment;
-import com.example.Employee_Management.model.EmployeeCreateRequest;
+
 import com.example.Employee_Management.model.TaskCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 public class TaskController {

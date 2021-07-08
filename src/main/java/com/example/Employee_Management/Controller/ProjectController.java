@@ -1,10 +1,9 @@
 package com.example.Employee_Management.Controller;
 
 import com.example.Employee_Management.Service.ProjectService;
-import com.example.Employee_Management.entity.Designation;
-import com.example.Employee_Management.entity.Employee;
+
 import com.example.Employee_Management.entity.Project;
-import com.example.Employee_Management.model.EmployeeCreateRequest;
+
 import com.example.Employee_Management.model.ProjectCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

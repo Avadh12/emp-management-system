@@ -33,7 +33,7 @@ public class EmployeeService {
         emp.setEnd_date(request.getEnd_date());
         emp.setSalary(request.getSalary());
         emp.setStatus(request.getStatus());
-       // emp.setDesignation(request.getDesignation());
+
 
 
         employeeRepository.save(emp);
@@ -76,10 +76,10 @@ public class EmployeeService {
         user2.setStatus(user1.getStatus());
         user2.setMobile_No(user1.getMobile_No());
 
-//        user2.setEmp_id(user1.getEmp_id());
-        //user2.setDesignation(user1.getDesignation());
+
         employeeRepository.save(user2);
     }
+
 
 
 

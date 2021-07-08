@@ -1,10 +1,9 @@
 package com.example.Employee_Management.Service;
 
 import com.example.Employee_Management.Repository.ProjectRepository;
-import com.example.Employee_Management.entity.Designation;
-import com.example.Employee_Management.entity.Employee;
+
 import com.example.Employee_Management.entity.Project;
-import com.example.Employee_Management.model.DesignationCreateRequest;
+
 import com.example.Employee_Management.model.ProjectCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +51,7 @@ public class ProjectService {
     public void update(Project project1,Integer projectID){
         Optional<Project>projectOptional = projectRepository.findById(projectID);
         Project project2 = projectOptional.orElseGet(Project::new);
-//        project2.setProject_Id(project1.getProject_Id());
+
         project2.setProjectName(project1.getProjectName());
         projectRepository.save(project2);
     }
