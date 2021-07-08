@@ -1,6 +1,6 @@
-package com.example.Employee_Management.Service;
+package com.example.Employee_Management.service;
 
-import com.example.Employee_Management.Repository.ProjectRepository;
+import com.example.Employee_Management.repository.ProjectRepository;
 
 import com.example.Employee_Management.entity.Project;
 

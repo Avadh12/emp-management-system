@@ -1,6 +1,5 @@
-package com.example.Employee_Management.Repository;
+package com.example.Employee_Management.repository;
 
-import com.example.Employee_Management.entity.Employee;
 import com.example.Employee_Management.entity.Project;
 
 import org.springframework.data.repository.CrudRepository;

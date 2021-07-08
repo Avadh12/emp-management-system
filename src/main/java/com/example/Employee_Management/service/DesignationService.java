@@ -1,6 +1,6 @@
-package com.example.Employee_Management.Service;
+package com.example.Employee_Management.service;
 
-import com.example.Employee_Management.Repository.DesignationRepository;
+import com.example.Employee_Management.repository.DesignationRepository;
 import com.example.Employee_Management.entity.Designation;
 
 import com.example.Employee_Management.model.DesignationCreateRequest;
