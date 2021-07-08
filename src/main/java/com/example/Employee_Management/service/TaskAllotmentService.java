@@ -24,9 +24,6 @@ public class TaskAllotmentService {
         Employee employee = new Employee();
         employee.setEmpId(request.getEmpId());
         allotment.setEmployee(employee);
-
-
-
         allotment.setFeedback(request.getFeedback());
         allotment.setStatus(request.getStatus());
         Task task = new Task();
@@ -73,8 +70,5 @@ public class TaskAllotmentService {
         taskAllotmentRepository.save(taskAllot);
     }
 
-//    public List<TaskAllotment>getTaskAllotmentByRanking(Integer ranking){
-//        return taskAllotmentRepository.getTaskAllotmentByByRanking(ranking);
-//
-//    }
+
 }

@@ -1,6 +1,6 @@
 package com.example.Employee_Management.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,6 @@ public class TaskAllotment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer taskAllotedId;
-
     @JoinColumn(name="taskIdFk", referencedColumnName="taskId")
     @OneToOne Task task;
 

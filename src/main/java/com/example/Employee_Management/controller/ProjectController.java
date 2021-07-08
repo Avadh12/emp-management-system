@@ -40,6 +40,7 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getProjectByID(id));
     }
 
+
     @DeleteMapping("/{id}")
     private void DeleteProject(@PathVariable Integer id){
         projectService.deleteByID(id);

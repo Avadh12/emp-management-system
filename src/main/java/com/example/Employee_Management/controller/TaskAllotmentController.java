@@ -52,13 +52,5 @@ public class TaskAllotmentController {
         taskAllotmentService.update(taskAllotment,id);
     }
 
-//    @GetMapping("/{ta}")
-//    public ResponseEntity<List<TaskAllotment>> getTaskAllotmentByRanking(@PathVariable Integer ranking){
-//        return new ResponseEntity<>(taskAllotmentService.getTaskAllotmentByRanking(ranking), HttpStatus.OK);
-//    }
-
-
-
-
 
 }

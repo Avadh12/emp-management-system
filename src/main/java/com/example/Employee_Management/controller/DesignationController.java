@@ -38,6 +38,7 @@ public class DesignationController {
         return ResponseEntity.ok(designationService.getDesignationByID(id));
     }
 
+
     @DeleteMapping("/{id}")
     private void DeleteDesignation(@PathVariable Integer id){
         designationService.deleteByID(id);
@@ -45,8 +46,8 @@ public class DesignationController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private void changeDesignation(@PathVariable Integer id, @RequestBody Designation designation){
-        designationService.update(designation, id);
+    private void changeDesignation(@PathVariable Integer id, @RequestBody Designation designation2){
+        designationService.update(designation2, id);
     }
 
 }

@@ -12,8 +12,6 @@ import java.util.List;
 public interface TaskAllotmentRepository extends CrudRepository<TaskAllotment,Integer> {
     List<TaskAllotment> findAll();
 
-//@Query("SELECT id from taskAllotment id where id.ranking=?1")
-//    public List<TaskAllotment> getTaskAllotmentByByRanking(Integer ranking);
-//
+
 
 }
