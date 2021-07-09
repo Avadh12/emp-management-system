@@ -1,14 +1,10 @@
 package com.example.Employee_Management.controller;
-
 import com.example.Employee_Management.service.TaskService;
-
 import com.example.Employee_Management.entity.Task;
-
 import com.example.Employee_Management.model.TaskCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequestMapping("/api/v1/task")
@@ -22,35 +18,26 @@ public class TaskController {
         taskService.createTask(request);
         return ResponseEntity.ok("Created");
     }
-
     @GetMapping
     private List<Task> getAll() {
         return taskService.getAll();
     }
-
-
     @DeleteMapping
-    private void DeleteAllStudent() {
+    private void DeleteAllTaskController() {
         taskService.deleteAll();
     }
-
-
     @GetMapping("/{id}")
     public Task getTaskByID(@PathVariable Integer id) {
         return taskService.getTaskByID(id);
     }
-
-
     @DeleteMapping("/{id}")
     private void DeleteTask(@PathVariable Integer id){
         taskService.deleteByID(id);
     }
-
     @PutMapping("/{id}")
     private void updateTask(@PathVariable Integer id, @RequestBody Task task){
         taskService.update(task, id);
     }
-
 }
 
 

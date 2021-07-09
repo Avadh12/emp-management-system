@@ -4,8 +4,6 @@ import com.example.Employee_Management.entity.Designation;
 import com.example.Employee_Management.model.DesignationCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import sun.security.krb5.internal.crypto.Des;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +12,7 @@ import java.util.Optional;
 public class DesignationService {
     @Autowired
     private DesignationRepository designationRepository;
-
     public void createDesignation(DesignationCreateRequest request) {
-
         if (request.getDesignatedAs().equals("")) throw new RuntimeException("");
         Designation designation = new Designation();
         designation.setDesignatedAs(request.getDesignatedAs());
@@ -39,7 +35,6 @@ public class DesignationService {
     public void deleteByID(Integer designationID){
         designationRepository.deleteById(designationID);
     }
-
     public void update(Designation designation,Integer designationID){
         Optional<Designation>designationOptional = designationRepository.findById(designationID);
         Designation destObj =new Designation();

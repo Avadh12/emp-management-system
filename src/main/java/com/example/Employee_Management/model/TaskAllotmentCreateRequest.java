@@ -1,5 +1,4 @@
 package com.example.Employee_Management.model;
-
 import lombok.*;
 
 @Getter
@@ -7,6 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class TaskAllotmentCreateRequest {
     private  Integer taskId;
     private long empId;

@@ -1,5 +1,4 @@
 package com.example.Employee_Management.model;
-
 import com.example.Employee_Management.entity.Designation;
 import lombok.*;
 
@@ -8,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class EmployeeCreateRequest {
     private String name;
     private Integer destId;
