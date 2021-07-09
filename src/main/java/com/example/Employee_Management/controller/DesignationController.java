@@ -46,8 +46,8 @@ public class DesignationController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private void changeDesignation(@PathVariable Integer id, @RequestBody Designation designation2){
-        designationService.update(designation2, id);
+    private void changeDesignation(@PathVariable Integer id, @RequestBody Designation designation){
+        designationService.update(designation, id);
     }
 
 }

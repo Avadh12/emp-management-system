@@ -47,8 +47,7 @@ public class TaskAllotmentController {
     }
 
     @PutMapping("/{id}")
-    private void updateTaskAllotment(@PathVariable Integer id
-            ,@RequestBody TaskAllotment taskAllotment){
+    private void changeTaskAllotment(@PathVariable Integer id,@RequestBody TaskAllotment taskAllotment){
         taskAllotmentService.update(taskAllotment,id);
     }
 

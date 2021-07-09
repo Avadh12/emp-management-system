@@ -1,13 +1,12 @@
 package com.example.Employee_Management.entity;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
+@ToString
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "employee")
@@ -16,11 +15,6 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long empId;
-
-    @JoinColumns({
-            @JoinColumn(name="destIdFk", referencedColumnName="designationId")
-    })
-    @OneToOne Designation designation;
     private String name;
     private Integer mobileNo;
     private String address;
@@ -29,6 +23,12 @@ public class Employee {
     private String endDate;
     private int salary;
     private String status;
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "designationid")
+    private Designation designation;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "employee")
+    private List<TaskAllotment> taskAllotment;
 
 }
 
