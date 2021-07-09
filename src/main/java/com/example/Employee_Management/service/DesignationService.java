@@ -12,11 +12,12 @@ import java.util.Optional;
 public class DesignationService {
     @Autowired
     private DesignationRepository designationRepository;
-    public void createDesignation(DesignationCreateRequest request) {
+    public Designation createDesignation(DesignationCreateRequest request) {
         if (request.getDesignatedAs().equals("")) throw new RuntimeException("");
         Designation designation = new Designation();
         designation.setDesignatedAs(request.getDesignatedAs());
         designationRepository.save(designation);
+        return designation;
     }
     public List<Designation> getAll()
     {
@@ -24,7 +25,7 @@ public class DesignationService {
         designationRepository.findAll().forEach(designation -> designations.add(designation));
         return designations;
     }
-    public void deleteAll (){
+    public void deleteAll(){
         designationRepository.deleteAll();
     }
     public Designation getDesignationByID(Integer designationID){

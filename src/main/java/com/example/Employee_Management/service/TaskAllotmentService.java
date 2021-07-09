@@ -14,7 +14,7 @@ import java.util.Optional;
 public class TaskAllotmentService {
     @Autowired
     private TaskAllotmentRepository taskAllotmentRepository;
-    public void createTaskAllotment(TaskAllotmentCreateRequest request){
+    public TaskAllotment createTaskAllotment(TaskAllotmentCreateRequest request){
         if (request.getEndDate().equals("")) throw new RuntimeException("");
         TaskAllotment allotment = new TaskAllotment();
         allotment.setEndDate(request.getEndDate());
@@ -29,6 +29,7 @@ public class TaskAllotmentService {
         allotment.setRanking(request.getRanking());
         allotment.setStartDate(request.getStartDate());
         taskAllotmentRepository.save(allotment);
+        return allotment;
     }
     public List<TaskAllotment> getAll()
     {

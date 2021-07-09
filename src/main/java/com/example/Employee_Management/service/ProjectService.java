@@ -12,12 +12,13 @@ import java.util.Optional;
 public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
-    public void createProject(ProjectCreateRequest request) {
+    public Project createProject(ProjectCreateRequest request) {
         if (request.getProjectName().equals("")) throw new RuntimeException("");
         Project project = new Project();
         project.setProjectName(request.getProjectName());
 
         projectRepository.save(project);
+        return project;
     }
     public List<Project> getAll()
     {

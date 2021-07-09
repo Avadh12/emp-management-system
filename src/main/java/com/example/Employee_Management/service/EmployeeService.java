@@ -13,7 +13,7 @@ import java.util.Optional;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
-    public void createUser(EmployeeCreateRequest request) {
+    public Employee createUser(EmployeeCreateRequest request) {
         if (request.getName().equals("")) throw new RuntimeException("");
         Employee employee = new Employee();
         employee.setName(request.getName());
@@ -28,6 +28,7 @@ public class EmployeeService {
         employee.setSalary(request.getSalary());
         employee.setStatus(request.getStatus());
         employeeRepository.save(employee);
+        return employee;
     }
     public Employee getUserByID(Long userID) {
         Optional<Employee> studentOptional = employeeRepository.findById(userID);

@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
-    public void createTask(TaskCreateRequest request) {
+    public Task createTask(TaskCreateRequest request) {
         if (request.getTaskDescription().equals("")) throw new RuntimeException("");
         Task task = new Task();
         task.setTaskDescription(request.getTaskDescription());
@@ -21,6 +21,7 @@ public class TaskService {
         project.setProjectId((request.getProjectId()));
         task.setProject(project);
         taskRepository.save(task);
+        return task;
     }
     public List<Task> getAll(){
         List<Task>tasks = new ArrayList<Task>();
