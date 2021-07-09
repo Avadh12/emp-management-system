@@ -11,7 +11,6 @@ public interface TaskAllotmentRepository extends CrudRepository<TaskAllotment,In
     List<TaskAllotment> findAll();
 
 
-   // @Query("SELECT a from TaskAllotment a where a.status='PENDING'")
     @Query("SELECT a from TaskAllotment a where a.status='pending'")
     List<TaskAllotment> findTaskAllotmentByStatusEquals(String string);
 
