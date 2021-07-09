@@ -62,4 +62,21 @@ public class TaskAllotmentService {
         taskAllot.setEmployee(taskAllotment.getEmployee());
         taskAllotmentRepository.save(taskAllot);
     }
+
+    public List<TaskAllotment> getPendingTasks() {
+        return taskAllotmentRepository.findTaskAllotmentByStatusEquals("pending");
+
+    }
+
+    public List<TaskAllotment> getStatus() {
+        return taskAllotmentRepository.findTaskAllotmentByStatus();
+
+    }
+
+    public List<TaskAllotment> getAvgRanking() {
+        return taskAllotmentRepository.findTaskAllotmentByRankingIsGreaterThanEqual();
+
+    }
+
+
 }

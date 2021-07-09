@@ -44,4 +44,21 @@ public class TaskAllotmentController {
     private void changeTaskAllotment(@PathVariable Integer id,@RequestBody TaskAllotment taskAllotment){
         taskAllotmentService.update(taskAllotment,id);
     }
+    @GetMapping("/pending")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TaskAllotment> getAllStatus() {
+        return taskAllotmentService.getPendingTasks();
+    }
+
+    @GetMapping("/status")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TaskAllotment> getEmployee() {
+        return taskAllotmentService.getStatus();
+    }
+    @GetMapping("/ranking")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TaskAllotment> getRanking() {
+        return taskAllotmentService.getAvgRanking();
+    }
+
 }
