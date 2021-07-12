@@ -1,50 +1,30 @@
 package com.example.Employee_Management.entity;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
-
 
 @Getter
 @Setter
+@ToString
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity()
+@Table(name = "taskAllotment")
 public class TaskAllotment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer TaskAllotedId;
-
-    @JoinColumn(name="task_id_fk", referencedColumnName="Task_Id")
-    @OneToOne Task task;
-
-            @JoinColumn(name="emp_id_fk_1", referencedColumnName="Emp_id")
-    @OneToOne Employee employee;
-
-    private Integer Ranking;
+    private Integer taskAllotedId;
+    private Integer ranking;  // may be 1,2,3,....
     private String feedback;
     private String status;
-  //  @JsonFormat(pattern = "yyyy-mm-dd")
-    private String Start_date;
+    private String startDate;
+    private String endDate;
 
-    //@JsonFormat(pattern = "yyyy-mm-dd")
-    private String End_date;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "employeeId")
+    private Employee employee;
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "taskId")
+    private Task task;
 
-    @Override
-    public String toString() {
-        return "TaskAllotment{" +
-                "TaskAllotedId=" + TaskAllotedId +
-    //            ", Task_Id=" + Task_Id +
-     //           ", Emp_id=" + Emp_id +
-                ", Ranking=" + Ranking +
-                ", feedback='" + feedback + '\'' +
-                ", status='" + status + '\'' +
-                ", Start_date='" + Start_date + '\'' +
-                ", End_date='" + End_date + '\'' +
-                '}';
-    }
 }

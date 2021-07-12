@@ -1,5 +1,4 @@
 package com.example.Employee_Management.model;
-
 import lombok.*;
 
 @Getter
@@ -7,7 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class ProjectCreateRequest {
-
-    private String ProjectName;
+    private String projectName;
 }

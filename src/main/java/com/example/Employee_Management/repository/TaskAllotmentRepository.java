@@ -1,10 +1,9 @@
 package com.example.Employee_Management.repository;
-
 import com.example.Employee_Management.entity.TaskAllotment;
-
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -12,19 +11,17 @@ public interface TaskAllotmentRepository extends CrudRepository<TaskAllotment,In
     List<TaskAllotment> findAll();
 
 
-//    this is for top 10 intern
-//    @Query(value ="SELECT alt.dest, avg(r.rating) " +
-//            "FROM taskallotment alt " +
-//            "INNER JOIN " +
-//            "ratings r " +
-//            "ON emp.emp_id = r.emp_id " +
-//            "WHERE emp.name LIKE %:name% " +
-//            "GROUP BY emp.dest " +
-//            "ORDER BY avg(r.rating) DESC " +
-//            "LIMIT 10",
-//            nativeQuery = true)
-//    List<Employee[]> topTenEmployeeByRating(@Param("name") String name);
+    @Query("SELECT a from TaskAllotment a where a.status='pending'")
+    List<TaskAllotment> findTaskAllotmentByStatusEquals(String string);
 
- //   Select top 10 from Employee where Employee.emp_id = task allotment. Emp_id and (select * from task allotment where rating =5 )
+
+    @Query("SELECT a,b from TaskAllotment a join fetch a.employee b " +
+            "where a.status='COMPLETE' order by b.name")
+    List<TaskAllotment> findTaskAllotmentByStatus();
+
+    @Modifying
+    @Query(nativeQuery = true, value = "select i.name, avg(a.ranking) from taskAllotment a join " +
+            "employee i on i.id = a.empId group by i.name limit 10")
+    List<TaskAllotment> findTaskAllotmentByRankingIsGreaterThanEqual();
 
 }
